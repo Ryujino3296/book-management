@@ -26,7 +26,7 @@ router.post('/', validateUser, catchAsync(async (req, res) => {
     await newBook.save();
     res.json({ newBook, message: 'Book added successfully' })
 }))
-router.get('/:bookId', validateUser, catchAsync(async (req, res) => {
+router.get('/:bookId', catchAsync(async (req, res) => {
     const { bookId } = req.params;
     //console.log(bookId)
     if (!mongoose.Types.ObjectId.isValid(bookId)) throw new appError('not a valid book id', 400)
