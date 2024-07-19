@@ -1,5 +1,5 @@
 const express = require('express')
-const app = express()
+const app = express();
 require('dotenv').config()
 const userRoutes=require('./routes/userRoutes')
 const bookRoutes=require('./routes/bookRoutes')
@@ -40,6 +40,7 @@ app.use(morgan('tiny'))
 app.use('/user',userRoutes)
 app.use('/books',bookRoutes)
 
+
 //error
 app.use((err, req, res, next) => {
   const { message = "something went wrong/default message to debug u have to dig dipper", statusCode = 500 } = err
@@ -50,4 +51,4 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(process.env.port, () => { console.log(`server started on port ${process.env.port}`) })
+app.listen(process.env.port||5000, () => { console.log(`server started on port ${process.env.port}`) })

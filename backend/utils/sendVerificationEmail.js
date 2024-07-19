@@ -10,22 +10,22 @@ const transporter = nodemailer.createTransport({
         pass: process.env.GMAIL_PASS,
     },
 });
-async function sendVerificationEmail(href) {
+async function sendVerificationEmail(token,email) {
     // send mail with defined transport object
     try {
         const info = await transporter.sendMail({
             from: 'akkr9507@gmail.com', // sender address
-            to: "amul.kumar.min21@itbhu.ac.in", // list of receivers
+            to: email || "amul.kumar.min21@itbhu.ac.in", // list of receivers
             subject: "account verification Link", // Subject line
             text: "this is email to verify your account ",// plain text body
-            html: `<a href=${href}>${href}<a/>`, // html body
+            html: `<a href=${token}>${token}<a/>`, // html body
         });
         console.log("Message sent: %s", info);
         // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
     }
     catch (e) {
         console.error(e)
-        throw new appError("unable to send email",400)
+        throw new appError("unable to send email/plz enter correct email",400)
     }
 
 }

@@ -6,6 +6,7 @@ const User = require('../models/user.js')
 const validateUserSchema = require('../utils/validateUserSchema.js')
 const jwt = require('jsonwebtoken')
 const sendVerificationEmail = require('../utils/sendVerificationEmail.js')
+const validateUser = require('../middlewares/validateUser.js')
 
 
 
@@ -18,7 +19,7 @@ router.post('/sign-in', catchAsync(async (req, res, next) => {
     const user = new User({ email, password })
     const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' })
     const verifyUrl = `${process.env.FRONTEND_URL}/emailverification/?token=${jwtToken}`
-    await sendVerificationEmail(verifyUrl)
+    await sendVerificationEmail(verifyUrl,email)
     await user.save()
     // res.json({ jwtToken, verifyUrl })
     res.json({ "message": "please verify you email then login" })
@@ -34,7 +35,7 @@ router.post('/log-in', catchAsync(async (req, res, next) => {
         if (!isPasswordCorrect) throw new appError("password is incorrect", 400)
         if (!user.isVerified) throw new appError("user is not verified", 400)
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' })
-        res.cookie('jwtToken', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true })
+        res.cookie('jwtToken', token, { maxAge: 24 * 60 * 60 * 1000})
         res.json({ "message": "login successfully", jwtToken, user })
     }
     const { jwtToken } = req.cookies;
@@ -65,6 +66,9 @@ router.post('/verify-user', catchAsync(async (req, res, next) => {
     res.json({ message: "user is verified", user })
 }))
 
+router.post('/verify-token',validateUser,(req,res)=>{
+    res.json({success:true})
+})
 
 
 

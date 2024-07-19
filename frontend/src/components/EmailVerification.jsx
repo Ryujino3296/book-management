@@ -10,7 +10,7 @@ const EmailVerification = () => {
     const [onLoading, setOnLoading] = useState(true);
     const verifyEmail=async ()=>{
         try {
-            const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}:8000/user/verify-user`,{token})
+            const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/verify-user`,{token})
             console.log(result)
             toast.success(result.data.message,toastifyOption);
             setIsVerified(true)

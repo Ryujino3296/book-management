@@ -3,19 +3,21 @@ import axios from 'axios'
 import { toast } from 'react-toastify';
 import { toastifyOption } from '../constant';
 import {Link} from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom';
 const Admin = () => {
   const [showPassword, setShowPassword] = useState(true)
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [onLoading, setOnLoading] = useState(false);
+  const navigate = useNavigate()
   const handleSendLink = async () => {
     setOnLoading(true)
     console.log("backend url",import.meta.env.VITE_BACKEND_URL)
     try {
-      const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}:8000/user/sign-in`, { email, password })
+      const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/sign-in`, { email, password })
       console.log(result)
       toast.success(result.data.message,toastifyOption);
+      Navigate('/login')
     }
     catch (e) {
       console.log(e.response.data.message)
@@ -26,9 +28,9 @@ const Admin = () => {
   return (
     <>
       <h2>
-        admin
+        sign in
       </h2>
-      <h3>testing email:amul123@gmail.com and password:amul123@gmail.com </h3>
+     
       <div>
         <input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)} />
         <input type={showPassword ? 'password' : 'text'} placeholder='password' onChange={(e) => setPassword(e.target.value)} />
