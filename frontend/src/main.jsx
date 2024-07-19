@@ -12,11 +12,14 @@ import Login from './components/Login.jsx'
 import Signin from './components/Signin.jsx'
 import Books from './components/Books.jsx';
 import AuthProvider from './AuthProvider.jsx';
+import Error from './components/Error.jsx';
+import NotFound from './components/NotFound.jsx';
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-
+    errorElement: <Error/>,
     children: [
       {
         path: "/login",
@@ -34,6 +37,10 @@ const router = createBrowserRouter([
         path: "books",
         element: <Books/>,
       },
+      {
+        path:'*',
+        element: <NotFound/>,
+      }
     ],
   },
 ]);

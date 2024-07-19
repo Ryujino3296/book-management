@@ -22,8 +22,10 @@ async function main() {
 main()
   .then(() => { console.log("database connected") })
   .catch(err => {
-    console.log(err)
-    console.log(process.env.MONGO_URI)
+    //console.log(err)
+    //console.log(process.env.MONGO_URI)
+    throw new Error("err connecting db",500)
+    
   }
   );
 //cors  
