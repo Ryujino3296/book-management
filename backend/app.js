@@ -23,11 +23,12 @@ main()
   .then(() => { console.log("database connected") })
   .catch(err => {
     //console.log(err)
-    //console.log(process.env.MONGO_URI)
+    console.log(process.env.MONGO_URI)
     throw new Error("err connecting db",500)
     
   }
   );
+
 //cors  
 //NOTE::::: add withCredentials when u set cookies in response
 var cors = require('cors')
@@ -55,4 +56,4 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(process.env.port||5000, () => { console.log(`server started on port ${process.env.port}`) })
+app.listen(process.env.PORT||5000, () => { console.log(`server started on port ${process.env.PORT}`) })
