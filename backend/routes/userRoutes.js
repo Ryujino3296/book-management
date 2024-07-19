@@ -35,7 +35,7 @@ router.post('/log-in', catchAsync(async (req, res, next) => {
         if (!isPasswordCorrect) throw new appError("password is incorrect", 400)
         if (!user.isVerified) throw new appError("user is not verified", 400)
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' })
-        res.cookie('jwtToken', token, { maxAge: 24 * 60 * 60 * 1000, sameSite: 'None'})
+        res.cookie('jwtToken', token, { maxAge: 24 * 60 * 60 * 1000,secure: true, sameSite: 'None'})
         res.json({ "message": "login successfully", jwtToken, user })
     }
     const { jwtToken } = req.cookies;
