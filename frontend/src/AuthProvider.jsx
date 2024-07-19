@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 
 export const AuthContext = createContext(false);
@@ -15,10 +16,12 @@ const AuthProvider = ({ children }) => {
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/verify-token`, { token }, { withCredentials: true })
                 .then(response => {
                     if (response.data.success) {
+                        console.log("success ")
                         setIsAuth(true);
                     }
                 })
                 .catch(error => {
+                    toast.error('error verifying token',400)
                     console.log('Error verifying token:', error);
                 });
         }
