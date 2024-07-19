@@ -33,7 +33,7 @@ const Layout = () => {
     <div>
       <nav style={navStyle}>
         <ul style={ulStyle}>
-          <Link to='/books' style={linkStyle}><li style={liStyle}>Home</li></Link>
+          <Link to='/' style={linkStyle}><li style={liStyle}>Home</li></Link>
           <Link to='/login' style={linkStyle}><li style={liStyle}>Login</li></Link>
           <Link to='/signin' style={linkStyle}><li style={liStyle}>Signin</li></Link>
         </ul>

@@ -22,6 +22,10 @@ const router = createBrowserRouter([
     errorElement: <Error/>,
     children: [
       {
+        path: "/",
+        element: <Books/>,
+      },
+      {
         path: "/login",
         element: <Login/>,
       },
@@ -33,10 +37,7 @@ const router = createBrowserRouter([
         path: "emailverification",
         element: <EmailVerification/>,
       },
-      {
-        path: "books",
-        element: <Books/>,
-      },
+      
       {
         path:'*',
         element: <NotFound/>,

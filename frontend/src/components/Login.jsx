@@ -24,7 +24,7 @@ const Login = () => {
       console.log(data)
       toast.success(data?.message, toastifyOption);
       setIsAuth(true)
-      navigate('/books')
+      navigate('/')
 
     } catch (e) {
       console.log(e)
