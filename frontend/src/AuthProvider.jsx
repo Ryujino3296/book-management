@@ -11,12 +11,12 @@ const AuthProvider = ({ children }) => {
    
     useEffect(() => {
         const token = Cookies.get("jwtToken");
-        console.log(token);
+        console.log("token that we are grabing",token);
         if (token) {
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/verify-token`, { token }, { withCredentials: true })
                 .then(response => {
                     if (response.data.success) {
-                        console.log("success ")
+                        console.log("success")
                         setIsAuth(true);
                     }
                 })
