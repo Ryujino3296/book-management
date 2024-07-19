@@ -34,7 +34,8 @@ main()
 var cors = require('cors')
 app.use(cors({
   origin: process.env.FRONTEND_URL,
-  credentials: true
+  credentials: true,
+  sameSite: 'None'
 }))
 // morgan req logger
 
