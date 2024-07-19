@@ -40,7 +40,9 @@ app.use(morgan('tiny'))
 app.use('/user',userRoutes)
 app.use('/books',bookRoutes)
 
-
+app.use('*',(req,res)=>{
+  throw new Error("route not found",404)
+})
 //error
 app.use((err, req, res, next) => {
   const { message = "something went wrong/default message to debug u have to dig dipper", statusCode = 500 } = err
