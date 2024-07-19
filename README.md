@@ -38,13 +38,13 @@ The Book Management Store API is a full-stack application built with the MERN st
    cd ../frontend
    npm start
 ## Backend env
-MONGO_URI=??
-PORT=8000
-JWT_SECRET=??
-GMAIL_PASS=??
-GMAIL_USER=??
-GMAIL_PORT=465
-FRONTEND_URL=http://localhost:5173
+- MONGO_URI=??
+- PORT=8000
+- JWT_SECRET=??
+- GMAIL_PASS=??
+- GMAIL_USER=??
+- GMAIL_PORT=465
+- FRONTEND_URL=http://localhost:5173
 
 ## Frontend env
-VITE_BACKEND_URL=http://localhost:8000
+- VITE_BACKEND_URL=http://localhost:8000
