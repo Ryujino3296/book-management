@@ -49,7 +49,10 @@ app.use('*',(req,res)=>{
 //error
 app.use((err, req, res, next) => {
   const { message = "something went wrong/default message to debug u have to dig dipper", statusCode = 500 } = err
+  
   console.log("**********error**************")
+  console.log("**********error**************")
+  console.log(message,statusCode);
   console.log("**********error**************")
   console.log("**********error**************")
   res.status(statusCode).json({ message })
