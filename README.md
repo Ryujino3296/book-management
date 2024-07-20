@@ -5,6 +5,7 @@
 ## Deployment
 
 ### Backend
+- Note: As Render's free deployment stops the server when idle, visit this URL first to restart the backend server.
 - **URL:** [https://book-managment-intern.onrender.com](https://book-managment-intern.onrender.com)
 
 ### Frontend
